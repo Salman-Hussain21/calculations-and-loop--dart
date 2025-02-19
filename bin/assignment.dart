@@ -105,6 +105,44 @@ void main() {
   // print("Cost of Ad for 1 Day = $costofday");
   // print("Cost of Ad per month = $finalmonthlycost");
 
+  // Task 02.
+  // 10 gram gold price 236240
+  // gold possession: unknown
+  // 1 Tola = 11.66 grams
+  // calculate 2.5% tax
+  // condition is gold asset > 7.5 (Tola equal)
+
+  try{
+    print("Enter 10 gram 22 car. rates: \t");
+    double? g10Rates = double.parse(stdin.readLineSync().toString());
+    print("Enter gold asset:\t");
+    double? gAsset = double.parse(stdin.readLineSync().toString());
+    calcTax(gAsset, g10Rates);
+  }
+  on FormatException catch (e){
+    print("Error in input $e");
+  }
+}
+
+void calcTax(double? gAsset, double? g10Rates ){
+  double? goldTola = g10Rates!/10 * 11.667;
+  double?  goldAsseCost;
+  double? TaxAmount;
+  if(gAsset !< 7.5){
+    print("Insufficient Balance");
+    return;
+  }
+  else{
+    goldAsseCost = gAsset * goldTola;
+    TaxAmount = goldAsseCost * 2.6 /10;
+
+    print("Gold Asset in possession:\t\t\t $gAsset");
+    print("10Grams 22 car gold rates:\t\t\t $g10Rates");
+    print("1 tola gold rates (11.66 grams):\t $goldTola");
+    print("Gold asset cost:\t\t\t\t\t $goldAsseCost");
+    print("2.5% Tax amount:\t\t\t\t\t $TaxAmount");
+  }
+
 }
 
 
